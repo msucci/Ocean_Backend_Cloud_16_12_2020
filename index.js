@@ -1,16 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('mongodb');
-const port = process.env.port || 3000; // ou pega a porta que vem do Heroku , ou coloca como default a porta 3000
+
+const port = process.env.PORT || 3000;
+
 (async () => {
 
 const connectionString = 'mongodb://localhost:27017/';
 
 console.info('Conectando ao banco de dados...');
 
-/* const client = await mongodb.MongoClient.connect(connectionString, {
+/*const client = await mongodb.MongoClient.connect(connectionString, {
   useUnifiedTopology: true
-}); */
+});*/
 
 const app = express();
 
@@ -70,7 +72,7 @@ app.delete('/mensagens/:id', async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.info('Servidor rodando em http://localhost' + port);
+  console.info(`Servidor rodando em http://localhost:${port}.`);
 });
 
 })();
